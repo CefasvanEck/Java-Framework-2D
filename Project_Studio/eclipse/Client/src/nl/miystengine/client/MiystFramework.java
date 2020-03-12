@@ -206,15 +206,25 @@ public class MiystFramework implements Runnable
     	}
     	this.audioPlayer = new AudioPlayer();
     	this.logger = LogManager.getLogger();
+    	/**
+    	 * Accepted letters,symbols etc. for the Font renderer
+    	 */
         this.acceptedSymbols = " !@#$%&*()\'+,-./1234567890:;<=>?\"ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
     	this.deltatimer = new DeltaTime(20.0F);
     	this.wasResized = false;
     	this.running = true;
     	this.camera = new Camera();
+    	/**
+    	 * Static Random function.
+    	 * For now it doesn't have a seed but it can be done and useful for later games/projects
+    	 */
     	this.rand = new Random();
     	this.game = new GameMain();
     	this.debugUpdateTime = getSystemTime();
         this.launchedVersion = this.pathSources.version;
+        /**
+         * Display width and height when starting the project/game
+         */
         this.displayWidth = 854;
         this.displayHeight = 480;
         this.fullscreen = isFullScreen;
@@ -299,7 +309,7 @@ public class MiystFramework implements Runnable
         catch(Exception ex)
         {
 	        ex.printStackTrace();
-	        System.out.println("Couldn't load Display settings: "+Location);
+	        System.out.println("Couldn't load Display settings: " + Location);
 	        System.out.println("Game will close now....");	
 	        MiystFramework.miystengine.shutdownApplet();
         }
@@ -318,7 +328,7 @@ public class MiystFramework implements Runnable
         }
         
         /**
-         * Resiszable and title
+         * Resiszable and title of window
          */
         Display.setResizable(true);
         Display.setTitle(this.getGame().displayName() + "    Version: " + this.getGame().Version());

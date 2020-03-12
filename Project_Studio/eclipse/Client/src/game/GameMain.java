@@ -16,6 +16,9 @@ public class GameMain
 	 */
 	public GameMain(){}
 	
+	/**
+	 * Path to the logo of the window
+	 */
 	private static String logo;
 	
 	/**
@@ -40,11 +43,19 @@ public class GameMain
     	return MiystFramework.miystengine.getTextureManager().convertImageData(logo);
     }
 	
+	/**
+	 * This will be show first as the window name
+	 * @return the name of the window
+	 */
 	public String displayName()
 	{
 		return "test framework";
 	}
 	
+	/**
+	 * The version that will be displayed as the window name
+	 * @return the version string
+	 */
 	public String Version()
 	{
 		return "V1.0.0";
@@ -52,12 +63,11 @@ public class GameMain
 	
 	/**
 	 * Called just before you enter the world but after everything else is loaded.
-	 * Can be used to add the body parts of the player
 	 */
 	public void loadingBeforeEntering(){}
 	
 	/**
-	 * Called After creation of the Framebuffer
+	 * Called After creation of the Frame buffer object(FBO)
 	 */
 	public void activatedOnStart(){}
 
@@ -65,33 +75,6 @@ public class GameMain
 	 * Called when in Main menu, loading screen or in-game
 	 */
 	public void updateOnDeltaTime(){}
-	
-	/**
-	 * Called after rendering Entity, Water and Terrain
-	 */
-	public void updateAfterRenderering(){}
-	
-	/**
-	 * Will activate when loading screen is showing but only in the first part,before everything is loaded
-	 * @param loadingTimer, Min 5 and Max 31
-	 * @return int loading timer next
-	 */
-	public String loadingScreenBegin(int loadingTimer)
-	{
-		return "";
-	}
-	
-	
-	/**
-	 * Will activate when loading screen is showing but only at the part where terrain textures should load
-	 * @param loadingTimer, Min 86 and Max 109
-	 * @return int loading timer next
-	 */
-	public String loadingScreenTerrain(int loadingTimer)
-	{
-		int loading = loadingTimer;
-		return "";
-	}
 	
 	/**
 	 * Called just before you enter the world
