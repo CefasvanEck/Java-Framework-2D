@@ -328,7 +328,7 @@ public class MiystFramework implements Runnable
         }
         
         /**
-         * Resiszable and title of window
+         * Resizable and title of window
          */
         Display.setResizable(true);
         Display.setTitle(this.getGame().displayName() + "    Version: " + this.getGame().Version());
@@ -354,6 +354,9 @@ public class MiystFramework implements Runnable
         }
         GL11.glEnable(GL13.GL_MULTISAMPLE);
         FileBasicJava.checkGLError("Startup");
+        /**
+         * Creates the Frame Buffer Object without multisampling and after that creates one with multisampling
+         */
         MiystFramework.miystengine.camera.creatWindow();
         FileBasicJava.checkGLError("After EntityRender");
         
@@ -393,10 +396,8 @@ public class MiystFramework implements Runnable
     	
     	if (screen != null)
     	{
-    		ScaledResolution var2 = new ScaledResolution(this, this.displayWidth, this.displayHeight);
-    		int w = var2.getScaledWidth();
-    		int h = var2.getScaledHeight();
-    		((ScreenGui)screen).setWorldAndResolution(w, h);
+    		ScaledResolution sr = new ScaledResolution(this, this.displayWidth, this.displayHeight);
+    		((ScreenGui)screen).setWorldAndResolution(sr.getScaledWidth(), sr.getScaledHeight());
     	}
     }
 
@@ -555,6 +556,7 @@ public class MiystFramework implements Runnable
 	            	Gui.listOfGifs.get(i).getGifRender().updateGif();
 	            }
         	}
+        	this.game.updateOnDeltaTime();
         	//Update everything here with delta time
         }
 

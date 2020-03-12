@@ -39,13 +39,14 @@ import org.lwjgl.util.vector.Vector3f;
 
 public class MainMenuGui extends ScreenGui
 {	
-    private int textureID = MiystFramework.miystengine.getTextureManager().loadTexture(MiystFramework.miystengine.getPath().sources + "missing_texture" + ".png");
-    private float fadeToBlack = 1F;
+    private int textureID;
+    private float fadeToBlack;
     
     public MainMenuGui()
     {
+    	this.textureID = MiystFramework.miystengine.getTextureManager().loadTexture(MiystFramework.miystengine.getPath().sources + "missing_texture" + ".png"); 
         this.fadeToBlack = 1F;
-        this.listOfGifs.add(new ArrayListGif(new GifRenderer("BG")));
+        this.listOfGifs.add(new ArrayListGif(new GifRenderer("giphy")));
     }
 
     @Override

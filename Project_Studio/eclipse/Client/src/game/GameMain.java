@@ -72,7 +72,7 @@ public class GameMain
 	public void activatedOnStart(){}
 
 	/**
-	 * Called when in Main menu, loading screen or in-game
+	 * Called when in Main menu, loading screen and in-game
 	 */
 	public void updateOnDeltaTime(){}
 	
