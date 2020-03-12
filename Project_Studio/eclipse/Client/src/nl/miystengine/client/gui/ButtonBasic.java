@@ -1,12 +1,12 @@
 package nl.miystengine.client.gui;
 
 import nl.miystengine.client.FileBasicJava;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 import nl.miystengine.client.renderer.Tessellator;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
 import org.lwjgl.opengl.GL30;
-
 
 public class ButtonBasic extends Gui
 {
@@ -173,7 +173,7 @@ public class ButtonBasic extends Gui
     /**
      * Draws this button to the screen.
      */
-    public void drawButton(MiystEngine main, int x, int y)
+    public void drawButton(MiystFramework main, int x, int y)
     {
         if (this.visible)
         {
@@ -216,15 +216,14 @@ public class ButtonBasic extends Gui
             	color = 14737632;
             }
             this.drawCenteredString(main.getFondRenderer(), this.displayString, (this.xPosition + this.width / 2) - this.xString, (this.yPosition + (this.height - 8) / 2) - this.yString, color);
-            //GL11.glDisable(GL11.GL_BLEND);
         }
     }
 
-    protected void mouseDragged(MiystEngine main, int x, int y) {}
+    protected void mouseDragged(MiystFramework main, int x, int y) {}
 
     public void mouseReleased(int x, int y) {}
     
-    public boolean mousePressed(MiystEngine main, int x, int y)
+    public boolean mousePressed(MiystFramework main, int x, int y)
     {
     	if(this.specialButton)
     	{

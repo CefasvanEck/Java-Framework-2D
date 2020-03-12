@@ -3,7 +3,6 @@ package nl.miystengine.client.shader;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector4f;
 import nl.miystengine.client.FileBasicJava;
-import nl.miystengine.client.MiystEngine;
 
 public class StaticShader extends ShaderProgram
 {

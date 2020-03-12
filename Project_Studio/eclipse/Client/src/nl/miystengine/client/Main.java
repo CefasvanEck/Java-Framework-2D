@@ -41,7 +41,7 @@ public class Main
         NonOptionArgumentSpec noa = op.nonOptions();
         OptionSet Option = op.parse(option);
         List l = Option.valuesOf(noa);
-        MiystEngine tsw = new MiystEngine(Option.has("fullscreen"));
+        MiystFramework tsw = new MiystFramework(Option.has("fullscreen"));
         if (!l.isEmpty())
         {
             System.out.println("Completely ignored arguments: " + l);

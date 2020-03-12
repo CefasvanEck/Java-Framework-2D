@@ -1,6 +1,6 @@
 package nl.miystengine.client.screen;
 
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 import nl.miystengine.client.gui.MathHelper;
 
 public class ScaledResolution
@@ -11,7 +11,7 @@ public class ScaledResolution
     private double scaledHeightD;
     private double scaleFactor;
 
-    public ScaledResolution(MiystEngine tsw, int w, int h)
+    public ScaledResolution(MiystFramework tsw, int w, int h)
     {
         this.scaledWidth = w;
         this.scaledHeight = h;

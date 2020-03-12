@@ -17,7 +17,7 @@ public class DeltaTime
     public DeltaTime(float f)
     {
         this.ticksPerSecond = f;
-        this.lastSyncSysClock = MiystEngine.getSystemTime();
+        this.lastSyncSysClock = MiystFramework.getSystemTime();
         this.lastSyncHRClock = System.nanoTime() / 1000000L;
     }
 
@@ -26,7 +26,7 @@ public class DeltaTime
      */
     public void updateTimer()
     {
-        long var1 = MiystEngine.getSystemTime();
+        long var1 = MiystFramework.getSystemTime();
         long var3 = var1 - this.lastSyncSysClock;
         long var5 = System.nanoTime() / 1000000L;
         double var7 = (double)var5 / 1000.0D;

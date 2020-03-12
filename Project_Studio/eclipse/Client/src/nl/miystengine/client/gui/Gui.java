@@ -2,7 +2,6 @@ package nl.miystengine.client.gui;
 
 import java.util.ArrayList;
 import java.util.List;
-import nl.miystengine.client.MiystEngine;
 import nl.miystengine.client.renderer.Tessellator;
 import nl.miystengine.client.renderer.texture.ArrayListGif;
 import org.lwjgl.opengl.GL11;

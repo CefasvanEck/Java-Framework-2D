@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import nl.miystengine.client.ArrayListShadersLoaded;
 import nl.miystengine.client.FileBasicJava;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
@@ -38,7 +38,7 @@ public abstract class ShaderProgram
     	GL20.glAttachShader(programID, geometryShaderID);
         GL20.glAttachShader(programID, fragmentShaderID);    
         String shaderName = vertexFile.replace("VertexShader.txt", "");
-        String finalName = shaderName.replace(MiystEngine.miystengine.getPath().sourceShaders, "");
+        String finalName = shaderName.replace(MiystFramework.miystengine.getPath().sourceShaders, "");
         shadersList.add(new ArrayListShadersLoaded(finalName,programID, vertexFile, fragmentFile, vertexShaderID, fragmentShaderID));
         bindAttributes();
         GL20.glLinkProgram(programID);
@@ -54,7 +54,7 @@ public abstract class ShaderProgram
         GL20.glAttachShader(programID, vertexShaderID);
         GL20.glAttachShader(programID, fragmentShaderID);    
         String shaderName = vertexFile.replace("VertexShader.txt", "");
-        String finalName = shaderName.replace(MiystEngine.miystengine.getPath().sourceShaders, "");
+        String finalName = shaderName.replace(MiystFramework.miystengine.getPath().sourceShaders, "");
         shadersList.add(new ArrayListShadersLoaded(finalName,programID, vertexFile, fragmentFile, vertexShaderID, fragmentShaderID));
         bindAttributes();
         GL20.glLinkProgram(programID);
@@ -72,7 +72,7 @@ public abstract class ShaderProgram
 		GL20.glAttachShader(programID, vertexShaderID);
 		GL20.glAttachShader(programID, fragmentShaderID);
 		String shaderName = vertexFile.replace("VertexShader.txt", "");
-	    String finalName = shaderName.replace(MiystEngine.miystengine.getPath().sourceShaders, "");
+	    String finalName = shaderName.replace(MiystFramework.miystengine.getPath().sourceShaders, "");
 	    shadersList.add(new ArrayListShadersLoaded(finalName,programID, vertexFile, fragmentFile, vertexShaderID, fragmentShaderID));
 		bindAttributes(inVariables);
 		GL20.glLinkProgram(programID);
@@ -92,7 +92,7 @@ public abstract class ShaderProgram
 
     public void loadViewMatrix()
     {
-        this.loadMatrix(location_viewMatrix, MiystEngine.miystengine.getCamera().createViewMatrix());
+        this.loadMatrix(location_viewMatrix, MiystFramework.miystengine.getCamera().createViewMatrix());
     }
      
     protected void getAllUniformLocations()
@@ -197,14 +197,9 @@ public abstract class ShaderProgram
         
         if(GL20.glGetShaderi(shaderID, GL20.GL_COMPILE_STATUS) == GL11.GL_FALSE)
         {
-        	//IngameGui.arraylistTips.add(new ArrayListStrings("Could not compile shader!", 2000,new float[]{1F,0F,0F}));
-          	//IngameGui.arraylistTips.add(new ArrayListStrings("Shader: "+file+" Error at character " + errorline, 2000,new float[]{1F,0F,0F}));
-          	//IngameGui.arraylistTips.add(new ArrayListStrings("Could not compile shader!", 2000,new float[]{1F,0F,0F}));
-          	//IngameGui.arraylistTips.add(new ArrayListStrings(GL20.glGetShaderInfoLog(shaderID, 500), 2000,new float[]{1F,0F,0F}));
-            System.err.println("Could not compile shader!");
+        	System.err.println("Could not compile shader!");
             System.err.println("Shader: "+file+" Error at character " + errorline);
             System.err.println(GL20.glGetShaderInfoLog(shaderID, 500));
-            //MiystEngine.miystengine.shutdownApplet();
         }
         
         return shaderID;

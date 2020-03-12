@@ -21,9 +21,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.Callable;
+
 import javax.imageio.ImageIO;
-import nl.miystengine.client.FileBasicJava;
-import nl.miystengine.client.MiystEngine;
+
+import nl.miystengine.client.MiystFramework;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
@@ -36,6 +38,7 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.util.glu.GLU;
+
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -99,9 +102,9 @@ public class TextureManager implements ITickable
      */
     public void bindTexture(String source,int mipmap,boolean Texture2D)
     {
-    	 try
+    	try
   	    {
-        String sourceFinal = MiystEngine.miystengine.getPath().source + source;
+        String sourceFinal = MiystFramework.miystengine.getPath().source + source;
         int textureID;
     	if(sourceFinal.contains("None"))
     	{

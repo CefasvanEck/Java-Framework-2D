@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import org.lwjgl.input.Keyboard;
 
 import nl.miystengine.client.FileBasicJava;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 import nl.miystengine.client.gui.Gui;
 import nl.miystengine.client.gui.MainMenuGui;
 import nl.miystengine.client.gui.ScreenGui;
@@ -48,11 +48,11 @@ public class GifRenderer
 	{
 		if(images == null)
 	   	{
-		    File input = new File(MiystEngine.miystengine.getPath().source+"/" + this.gifSource + ".gif");  
+		    File input = new File(MiystFramework.miystengine.getPath().source+"/" + this.gifSource + ".gif");  
 		    try 
 		   	{
 		   		InputStream targetStream = new FileInputStream(input);	
-		   		ImageFrame[] images = MiystEngine.miystengine.getTextureManager().gifReader.readGif(targetStream);
+		   		ImageFrame[] images = MiystFramework.miystengine.getTextureManager().gifReader.readGif(targetStream);
 		   		this.images = images;
 		   		//Create texture
 		   		bufferedImage = new BufferedImage(this.images[0].getWidth(), this.images[0].getHeight() * (this.images.length - 1), BufferedImage.TYPE_INT_RGB);
@@ -74,7 +74,7 @@ public class GifRenderer
 			    	}
 			    }
 			    
-			    File file = new File(MiystEngine.miystengine.getPath().source + "/blendMap.png");
+			    File file = new File(MiystFramework.miystengine.getPath().source + "/blendMap.png");
 			    
 			    try 
 			    {
@@ -93,7 +93,7 @@ public class GifRenderer
 		
 		double gifHeightEnd = height * (this.images.length - 1);
 		double gifHeightBegin = height * -this.gif;
-	   	MiystEngine.miystengine.getTextureManager().bindTexture(MiystEngine.miystengine.getPath().source+"/blendmap.png",0,true); 	
+		MiystFramework.miystengine.getTextureManager().bindTexture(MiystFramework.miystengine.getPath().source+"/blendmap.png",0,true); 	
 	   	gui.drawTexturedNoTexture(positionX, positionY, width ,gifHeightEnd,0, gifHeightBegin);
 	}
 	

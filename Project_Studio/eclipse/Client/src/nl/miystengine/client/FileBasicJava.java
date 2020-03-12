@@ -38,8 +38,8 @@ public class FileBasicJava
 {	
 	public static void copyFile(String from, String to)
 	{
-		   File srcDir = new File(MiystEngine.miystengine.getPath().sources + from);
-           File destDir = new File(MiystEngine.miystengine.getPath().sources + to);
+		   File srcDir = new File(MiystFramework.miystengine.getPath().sources + from);
+           File destDir = new File(MiystFramework.miystengine.getPath().sources + to);
            try 
            {
         	   FileUtils.copyFile(srcDir, destDir);
@@ -63,8 +63,8 @@ public class FileBasicJava
 	
 	public static void copyDirectory(String from, String to)
 	{
-		   File srcDir = new File(MiystEngine.miystengine.getPath().sources + from);
-           File destDir = new File(MiystEngine.miystengine.getPath().sources + to);
+		   File srcDir = new File(MiystFramework.miystengine.getPath().sources + from);
+           File destDir = new File(MiystFramework.miystengine.getPath().sources + to);
            try 
            {
         	   FileUtils.copyDirectory(srcDir, destDir);
@@ -77,13 +77,13 @@ public class FileBasicJava
       
 	public static void backupFile()
 	{
-		MiystEngine.miystengine.getPath().date = MiystEngine.miystengine.getPath().date.replaceAll(":", ".");
+		MiystFramework.miystengine.getPath().date = MiystFramework.miystengine.getPath().date.replaceAll(":", ".");
 		   
-		createFolder(MiystEngine.miystengine.getPath().source + "/../../../backup/" + MiystEngine.miystengine.getPath().date,false);
+		createFolder(MiystFramework.miystengine.getPath().source + "/../../../backup/" + MiystFramework.miystengine.getPath().date,false);
 		   
-           File destDir = new File(MiystEngine.miystengine.getPath().source + "/../../../backup/" + MiystEngine.miystengine.getPath().date);
+           File destDir = new File(MiystFramework.miystengine.getPath().source + "/../../../backup/" + MiystFramework.miystengine.getPath().date);
            
-           File srcDir = new File(MiystEngine.miystengine.getPath().source + "/../eclipse/Client/src/");
+           File srcDir = new File(MiystFramework.miystengine.getPath().source + "/../eclipse/Client/src/");
            
            try 
            {
@@ -137,7 +137,7 @@ public class FileBasicJava
 	public static void checkGLError(String s)
     {
         int var2 = GL11.glGetError();
-        MiystEngine miystengine = MiystEngine.miystengine;
+        MiystFramework miystengine = MiystFramework.miystengine;
         if (var2 != 0)
         {
         	if(var2 != 1282 && var2 != 1281)
@@ -269,13 +269,13 @@ public class FileBasicJava
 	 }
 	
 	 /**
-	 * Create an folder and subfolder to make data more obvious.
+	 * Create an folder and subfolder
 	 * subFolder(/subFolderName)
 	 */
 	public static void createBasicFolder(String subFolder)
 	{	
 		BufferedWriter writer;
-	    File logFile = new File(MiystEngine.miystengine.getPath().sources + subFolder);
+	    File logFile = new File(MiystFramework.miystengine.getPath().sources + subFolder);
 	    logFile.mkdirs();
 	    try
 	    {

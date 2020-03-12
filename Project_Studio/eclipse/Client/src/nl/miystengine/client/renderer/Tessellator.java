@@ -6,7 +6,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.nio.ShortBuffer;
 import java.util.PriorityQueue;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;

@@ -4,11 +4,9 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-
 import nl.miystengine.client.FileBasicJava;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 
 import org.lwjgl.opengl.GL11;
 
@@ -53,7 +51,7 @@ public class FontRenderer
         else
         {
         	 System.out.print("Warning: Font not loaded!");
-             System.out.print("Search location: " + MiystEngine.miystengine.getPath().source+"las.png");
+             System.out.print("Search location: " + MiystFramework.miystengine.getPath().source + "las.png");
         }
     }
 
@@ -62,7 +60,7 @@ public class FontRenderer
         BufferedImage im;
         try
         {
-        im = ImageIO.read(new File(MiystEngine.miystengine.getPath().source+"las.png"));
+        im = ImageIO.read(new File(MiystFramework.miystengine.getPath().source + "las.png"));
         }
         catch (IOException ex)
         {
@@ -445,9 +443,7 @@ public class FontRenderer
     {
         float x = (at % 16 * 8);
         float y = (at / 16 * 8);
-        MiystEngine t =  MiystEngine.miystengine;
-	    
-        t.getTextureManager().bindTexture("/las.png",1,true);
+        MiystFramework.miystengine.getTextureManager().bindTexture("/las.png",1,true);
         double cw;
         if(at > 0)
         {

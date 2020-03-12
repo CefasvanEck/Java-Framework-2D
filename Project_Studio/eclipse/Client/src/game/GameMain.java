@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import org.lwjgl.util.vector.Vector3f;
 import nl.miystengine.client.FileBasicJava;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 
 public class GameMain
 {	
@@ -26,7 +26,7 @@ public class GameMain
     {
 		try
 		{
-			logo = MiystEngine.miystengine.getPath().source + "Logo blue.png";
+			logo = MiystFramework.miystengine.getPath().source + "Logo blue.png";
 			File file = new File(logo);
 			if(!file.exists())
 			{
@@ -37,7 +37,7 @@ public class GameMain
 		{
 			e.printStackTrace();
 		}
-    	return MiystEngine.miystengine.getTextureManager().convertImageData(logo);
+    	return MiystFramework.miystengine.getTextureManager().convertImageData(logo);
     }
 	
 	public String displayName()

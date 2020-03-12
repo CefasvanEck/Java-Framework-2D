@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.nio.IntBuffer;
 import javax.imageio.ImageIO;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 import nl.miystengine.client.renderer.GLAllocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

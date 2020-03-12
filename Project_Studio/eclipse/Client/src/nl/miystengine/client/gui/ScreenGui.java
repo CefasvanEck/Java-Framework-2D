@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 import nl.miystengine.client.renderer.Tessellator;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -129,7 +129,7 @@ public class ScreenGui extends Gui
         	GL11.glTranslatef(button.xPosition+(button.width / 2), button.yPosition+(button.height/2), 0);
             GL11.glScalef(1F + (button.rotate / 10F), 1F + (button.rotate / 10F), 1F + (button.rotate / 10F));
             GL11.glTranslatef(-(button.xPosition+(button.width / 2)), -(button.yPosition+(button.height/2)), 0);
-            button.drawButton(MiystEngine.miystengine, x, y);
+            button.drawButton(MiystFramework.miystengine, x, y);
             GL11.glPopMatrix();
         }
             
@@ -153,7 +153,7 @@ public class ScreenGui extends Gui
     
     public void drawTexturedNoColor(double x, double y, double widht,double height, double moveX,double moveY,String texture)
     {
-    	MiystEngine.miystengine.getTextureManager().bindTexture(texture,1,true);
+    	MiystFramework.miystengine.getTextureManager().bindTexture(texture,1,true);
         Tessellator tes = Tessellator.instance;
         tes.startDrawingQuads();
         tes.addVertexWithUV(x + moveX, y + height + moveY, this.zLevel,0, 1);
@@ -166,7 +166,7 @@ public class ScreenGui extends Gui
     public void drawTextured(double x, double y, double widht,double height, double moveX,double moveY,String texture)
     {
  	    GL11.glColor3f(0.7F, 0.7F, 0.7F);
- 	    MiystEngine.miystengine.getTextureManager().bindTexture(texture,0,true);  	
+ 	   MiystFramework.miystengine.getTextureManager().bindTexture(texture,0,true);  	
         Tessellator tes = Tessellator.instance;
         tes.startDrawingQuads();
         tes.addVertexWithUV(x + moveX, y + height + moveY, this.zLevel,0, 1);
@@ -184,7 +184,7 @@ public class ScreenGui extends Gui
     {
         if (p == 1)
         {
-        	MiystEngine.miystengine.displayScreenGui((ScreenGui)null);
+        	MiystFramework.miystengine.displayScreenGui((ScreenGui)null);
         }
     }
   
@@ -199,7 +199,7 @@ public class ScreenGui extends Gui
             {
                 ButtonBasic buttonbasic = (ButtonBasic)this.buttonList.get(i);
 
-                if (buttonbasic.mousePressed(MiystEngine.miystengine, mouseX, mouseY))
+                if (buttonbasic.mousePressed(MiystFramework.miystengine, mouseX, mouseY))
                 {
                     this.selectedButton = buttonbasic;
                     this.actionPerformed(buttonbasic);
@@ -216,7 +216,7 @@ public class ScreenGui extends Gui
      */
     public void setWorldAndResolution(int x, int y)
     {
-        this.fontRendererObj = MiystEngine.miystengine.getFondRenderer();
+        this.fontRendererObj = MiystFramework.miystengine.getFondRenderer();
         this.width = x;
         this.height = y;
         this.buttonList.clear();
@@ -255,14 +255,14 @@ public class ScreenGui extends Gui
      */
     public void handleMouseInput()
     {
-        int x = Mouse.getEventX() * this.width / MiystEngine.miystengine.getScreenWidth();
-        int y = this.height - Mouse.getEventY() * this.height / MiystEngine.miystengine.getScreenHeight() - 1;
+        int x = Mouse.getEventX() * this.width / MiystFramework.miystengine.getScreenWidth();
+        int y = this.height - Mouse.getEventY() * this.height / MiystFramework.miystengine.getScreenHeight() - 1;
         int eb = Mouse.getEventButton();
 
         if (Mouse.getEventButtonState())
         {
             this.eventButton = eb;
-            this.lastMouseEvent = MiystEngine.getSystemTime();
+            this.lastMouseEvent = MiystFramework.getSystemTime();
             this.mouseClicked(x, y, this.eventButton);
         }
     }

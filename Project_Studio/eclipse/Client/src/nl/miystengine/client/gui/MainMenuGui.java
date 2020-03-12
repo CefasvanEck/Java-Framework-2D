@@ -1,6 +1,7 @@
 package nl.miystengine.client.gui;
 
 import game.GameMain;
+
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,16 +12,19 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+
 import nl.miystengine.client.FileBasicJava;
 import nl.miystengine.client.Main;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 import nl.miystengine.client.renderer.Tessellator;
 import nl.miystengine.client.renderer.texture.ArrayListGif;
 import nl.miystengine.client.renderer.texture.GifRenderer;
 import nl.miystengine.client.renderer.texture.ImageFrame;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
@@ -35,7 +39,9 @@ import org.lwjgl.util.vector.Vector3f;
 
 public class MainMenuGui extends ScreenGui
 {	
-	
+    private int textureID = MiystFramework.miystengine.getTextureManager().loadTexture(MiystFramework.miystengine.getPath().sources + "missing_texture" + ".png");
+    private float fadeToBlack = 1F;
+    
     public MainMenuGui()
     {
         this.fadeToBlack = 1F;
@@ -64,7 +70,7 @@ public class MainMenuGui extends ScreenGui
     {
         if(button.id == 2)
         {
-			MiystEngine.miystengine.shutdown();
+			MiystFramework.miystengine.shutdown();
         }
     }
 
@@ -75,11 +81,11 @@ public class MainMenuGui extends ScreenGui
     {
         if (confirm && bid == 12)
         {
-            MiystEngine.miystengine.displayScreenGui(this);
+        	MiystFramework.miystengine.displayScreenGui(this);
         }
         else if (bid == 13)
         {
-            MiystEngine.miystengine.displayScreenGui(this);
+        	MiystFramework.miystengine.displayScreenGui(this);
         }
     }
     
@@ -100,7 +106,7 @@ public class MainMenuGui extends ScreenGui
     {
     	Gui.listOfGifs.get(0).getGifRender().renderGif(this,0,0, this.width, this.height);
 	   	
-        if(MiystEngine.miystengine.wasScreenResized() && this.showButtons && this.buttonList.isEmpty())
+        if(MiystFramework.miystengine.wasScreenResized() && this.showButtons && this.buttonList.isEmpty())
         {
         	int Y = this.height / 4 + 48;
         	int X = this.width / 2 - 100;
@@ -127,7 +133,7 @@ public class MainMenuGui extends ScreenGui
         
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        {
+        	//{
         	//MiystEngine.miystengine.getTextureManager().bindTexture("/texture here.png",0,true);  	
 	 	    GL11.glColor4f(0.7F, 0.7F, 0.7F, 1F - this.fadeToBlack);
 	 	    //Tessellator tes = Tessellator.instance;
@@ -137,7 +143,7 @@ public class MainMenuGui extends ScreenGui
 	        //tes.addVertexWithUV(this.width, 0, this.zLevel, 1, 0);
 	        //tes.addVertexWithUV(0 , 0, this.zLevel, 0, 0);
 	        //tes.draw();
-        }
+        	//}
 
         for (int i = 0; i < this.buttonList.size(); ++i)
         {  
@@ -146,7 +152,7 @@ public class MainMenuGui extends ScreenGui
         	GL11.glTranslatef(button.xPosition+(button.width / 2), button.yPosition+(button.height/2), 0);
             GL11.glScalef(1F + (button.rotate / 10F), 1F + (button.rotate / 10F), 1F + (button.rotate / 10F));
             GL11.glTranslatef(-(button.xPosition+(button.width / 2)), -(button.yPosition+(button.height/2)), 0);
-            button.drawButton(MiystEngine.miystengine, x, y);
+            button.drawButton(MiystFramework.miystengine, x, y);
             GL11.glPopMatrix();
         }
         
@@ -168,15 +174,9 @@ public class MainMenuGui extends ScreenGui
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D,this.textureID);
 		
-		this.drawCenteredStringWithColor(fontRendererObj,"fps: " + MiystEngine.getMiystEngine().debugFPS, (int)(this.width / 18) , (int)(this.height / 6), 1,1,1,1);
+		this.drawCenteredStringWithColor(fontRendererObj,"fps: " + MiystFramework.getMiystEngine().debugFPS, (int)(this.width / 18) , (int)(this.height / 6), 1,1,1,1);
 	 }
-    
-     private int textureID = MiystEngine.miystengine.getTextureManager().loadTexture(MiystEngine.miystengine.getPath().sources + "missing_texture" + ".png");
-    
-    
-     private float fadeToBlack = 1F;
  
-
     @Override
     public void updateGui(int x,int y)
     {

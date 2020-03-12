@@ -2,7 +2,6 @@ package nl.miystengine.client;
 
 import game.GameMain;
 import io.netty.util.concurrent.GenericFutureListener;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.color.ColorSpace;
@@ -73,7 +72,7 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListenableFutureTask;
 
-public class MiystEngine implements Runnable
+public class MiystFramework implements Runnable
 {
 	/**
 	 * The characters used for the font renderer
@@ -92,7 +91,7 @@ public class MiystEngine implements Runnable
 	/**
 	 * Main instance
 	 */
-	public static MiystEngine miystengine;  
+	public static MiystFramework miystengine;  
 	
 	/**
 	 * Speak for them self :)
@@ -197,7 +196,7 @@ public class MiystEngine implements Runnable
 	 * @param isFullScreen
 	 */
 	
-    public MiystEngine(boolean isFullScreen)
+    public MiystFramework(boolean isFullScreen)
     {
     	miystengine = this;
     	this.pathSources = new Sources();
@@ -302,7 +301,7 @@ public class MiystEngine implements Runnable
 	        ex.printStackTrace();
 	        System.out.println("Couldn't load Display settings: "+Location);
 	        System.out.println("Game will close now....");	
-	        MiystEngine.miystengine.shutdownApplet();
+	        MiystFramework.miystengine.shutdownApplet();
         }
         
         /**
@@ -345,7 +344,7 @@ public class MiystEngine implements Runnable
         }
         GL11.glEnable(GL13.GL_MULTISAMPLE);
         FileBasicJava.checkGLError("Startup");
-        MiystEngine.miystengine.camera.creatWindow();
+        MiystFramework.miystengine.camera.creatWindow();
         FileBasicJava.checkGLError("After EntityRender");
         
         this.renderEngine = new TextureManager();
@@ -694,7 +693,7 @@ public class MiystEngine implements Runnable
         {
         	this.currentScreen.setWorldAndResolution(sr.getScaledWidth(), sr.getScaledHeight());
         }
-        MiystEngine.miystengine.camera.creatWindow();
+        MiystFramework.miystengine.camera.creatWindow();
     }
     
     /**
@@ -762,7 +761,7 @@ public class MiystEngine implements Runnable
         this.systemTime = getSystemTime();
     }
 
-    public static MiystEngine getMiystEngine()
+    public static MiystFramework getMiystEngine()
     {
         return miystengine;
     }

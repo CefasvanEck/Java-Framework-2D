@@ -1,7 +1,6 @@
 package nl.miystengine.client.screen;
 
-import nl.miystengine.client.MiystEngine;
-
+import nl.miystengine.client.MiystFramework;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
@@ -49,13 +48,13 @@ public class Camera
 	  
 	  public static void creatWindow()
 	  {
-		  MiystEngine.miystengine.fbo = new Fbo(MiystEngine.miystengine.getScreenWidth(), MiystEngine.miystengine.getScreenHeight());	
-		  MiystEngine.miystengine.fbo_Out = new Fbo(MiystEngine.miystengine.getScreenWidth(), MiystEngine.miystengine.getScreenHeight(), Fbo.DEPTH_TEXTURE);
+		  MiystFramework.miystengine.fbo = new Fbo(MiystFramework.miystengine.getScreenWidth(), MiystFramework.miystengine.getScreenHeight());	
+		  MiystFramework.miystengine.fbo_Out = new Fbo(MiystFramework.miystengine.getScreenWidth(), MiystFramework.miystengine.getScreenHeight(), Fbo.DEPTH_TEXTURE);
 	  }
 	  
 	  public void setupOverlayRendering()
 	  {
-		  ScaledResolution scale = new ScaledResolution(MiystEngine.miystengine, MiystEngine.miystengine.getScreenWidth(), MiystEngine.miystengine.getScreenHeight());
+		  ScaledResolution scale = new ScaledResolution(MiystFramework.miystengine, MiystFramework.miystengine.getScreenWidth(), MiystFramework.miystengine.getScreenHeight());
 		  GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
 		  GL11.glMatrixMode(GL11.GL_PROJECTION);
 		  GL11.glLoadIdentity();
@@ -67,12 +66,12 @@ public class Camera
 	  
 	  public void updateCameraRender(float ticker)
 	  {    
-		  MiystEngine.miystengine.fbo.bindFrameBuffer();
+		  MiystFramework.miystengine.fbo.bindFrameBuffer();
 	      GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-	      ScaledResolution sr = new ScaledResolution(MiystEngine.miystengine, MiystEngine.miystengine.getScreenWidth(), MiystEngine.miystengine.getScreenHeight());
-	      int width = Mouse.getX() * sr.getScaledWidth() / MiystEngine.miystengine.getScreenWidth();
-	      int height = sr.getScaledHeight() - Mouse.getY() * sr.getScaledHeight() / MiystEngine.miystengine.getScreenHeight() - 1;
-	      GL11.glViewport(0, 0, MiystEngine.miystengine.getScreenWidth(), MiystEngine.miystengine.getScreenHeight());
+	      ScaledResolution sr = new ScaledResolution(MiystFramework.miystengine, MiystFramework.miystengine.getScreenWidth(), MiystFramework.miystengine.getScreenHeight());
+	      int width = Mouse.getX() * sr.getScaledWidth() / MiystFramework.miystengine.getScreenWidth();
+	      int height = sr.getScaledHeight() - Mouse.getY() * sr.getScaledHeight() / MiystFramework.miystengine.getScreenHeight() - 1;
+	      GL11.glViewport(0, 0, MiystFramework.miystengine.getScreenWidth(), MiystFramework.miystengine.getScreenHeight());
 	      GL11.glMatrixMode(GL11.GL_PROJECTION);
 	      GL11.glLoadIdentity();
 	      GL11.glMatrixMode(GL11.GL_MODELVIEW);
@@ -81,19 +80,19 @@ public class Camera
 	      GL11.glClear(GL11.GL_DEPTH_BUFFER_BIT);
 	      try
 	      {
-	    	  if(MiystEngine.miystengine.getCurrentScreen() != null)
+	    	  if(MiystFramework.miystengine.getCurrentScreen() != null)
 	    	  {
-	    		  MiystEngine.miystengine.getCurrentScreen().drawScreen(width, height);
+	    		  MiystFramework.miystengine.getCurrentScreen().drawScreen(width, height);
 	    	  }
 	      }
 	      catch (Throwable var12)
 	      {
 	    	  var12.printStackTrace();
 	      }
-	      MiystEngine.miystengine.fbo.unbindFrameBuffer();   
-	      MiystEngine.miystengine.fbo.resolveToFBO(MiystEngine.miystengine.fbo_Out);
+	      MiystFramework.miystengine.fbo.unbindFrameBuffer();   
+	      MiystFramework.miystengine.fbo.resolveToFBO(MiystFramework.miystengine.fbo_Out);
 	      
-	      MiystEngine.miystengine.fbo.framebufferRender(0,0,MiystEngine.miystengine.getScreenWidth(),MiystEngine.miystengine.getScreenHeight(),MiystEngine.miystengine.fbo_Out.getColourTexture());
+	      MiystFramework.miystengine.fbo.framebufferRender(0,0,MiystFramework.miystengine.getScreenWidth(),MiystFramework.miystengine.getScreenHeight(),MiystFramework.miystengine.fbo_Out.getColourTexture());
 	   }
 	 
 	  

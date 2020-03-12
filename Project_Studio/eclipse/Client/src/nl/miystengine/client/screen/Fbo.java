@@ -3,7 +3,7 @@ package nl.miystengine.client.screen;
 import java.nio.ByteBuffer;
 
 import nl.miystengine.client.FileBasicJava;
-import nl.miystengine.client.MiystEngine;
+import nl.miystengine.client.MiystFramework;
 import nl.miystengine.client.RawModel;
 import nl.miystengine.client.model.TessellatorModel;
 import nl.miystengine.client.shader.StaticShader;
@@ -54,8 +54,8 @@ public class Fbo
     }
     
     //Render
-    private static String VERTEX_FILE = MiystEngine.miystengine.getPath().sourceShaders + "screen/vertexShader.txt";
-   	private static String FRAGMENT_FILE = MiystEngine.miystengine.getPath().sourceShaders + "screen/fragmentShader.txt";
+    private static String VERTEX_FILE = MiystFramework.miystengine.getPath().sourceShaders + "screen/vertexShader.txt";
+   	private static String FRAGMENT_FILE = MiystFramework.miystengine.getPath().sourceShaders + "screen/fragmentShader.txt";
    	
    	public static StaticShader shader = new StaticShader(VERTEX_FILE, FRAGMENT_FILE);  
     public static float brightnessEffect = 1F;  
@@ -82,15 +82,12 @@ public class Fbo
 			GL11.glEnable(GL11.GL_TEXTURE_2D);  
             RawModel model = this.renderScreen();
        		shader.start();
-      		
        		shader.brightnessEffect(brightnessEffect);
        		shader.brightness(brightness);
       		shader.saturation(saturation);
       		shader.contrast(contrast);
-      		
        		shader.location_screenTexture = bufferID;
-       		shader.loadNearFar(new Vector2f(MiystEngine.miystengine.getCamera().getNearPlane(),MiystEngine.miystengine.getCamera().getFarPlane()));
-   			
+       		shader.loadNearFar(new Vector2f(MiystFramework.miystengine.getCamera().getNearPlane(),MiystFramework.miystengine.getCamera().getFarPlane()));
             GL13.glActiveTexture(GL13.GL_TEXTURE0);
             GL11.glBindTexture(GL11.GL_TEXTURE_2D, bufferID);
        		GL30.glBindVertexArray(model.getVaoID());
@@ -103,7 +100,6 @@ public class Fbo
        		shader.stop();
        		GL11.glEnable(GL11.GL_DEPTH_TEST);
        }
-    //
  
        /**
         * Deletes the frame buffer and its attachments when the game closes.
