@@ -189,6 +189,7 @@ public abstract class ShaderProgram
         catch(IOException e)
         {
             e.printStackTrace();
+            //System.exit(-1);
         }
         int shaderID = GL20.glCreateShader(type);
         GL20.glShaderSource(shaderID, shaderSource);
