@@ -72,6 +72,13 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListenableFutureTask;
 
+/**
+ * The following framework was made before I went to school and I'm remaking it with the knowledge I have now.
+ * Because of this, some code isn't optimized or has proper explanation. 
+ */
+
+//For now, this file has the proper explanation and is optimized.
+
 public class MiystFramework implements Runnable
 {
 	/**

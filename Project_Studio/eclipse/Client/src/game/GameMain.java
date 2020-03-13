@@ -9,6 +9,13 @@ import org.lwjgl.util.vector.Vector3f;
 import nl.miystengine.client.FileBasicJava;
 import nl.miystengine.client.MiystFramework;
 
+/**
+ * The following framework was made before I went to school and I'm remaking it with the knowledge I have now.
+ * Because of this, some code isn't optimized or has proper explanation. 
+ */
+
+//For now, this file has the proper explanation and is optimized.
+
 public class GameMain
 {	
 	/**

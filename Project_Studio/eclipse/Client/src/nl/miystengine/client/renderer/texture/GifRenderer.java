@@ -7,11 +7,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 import javax.imageio.ImageIO;
-
 import org.lwjgl.input.Keyboard;
-
 import nl.miystengine.client.FileBasicJava;
 import nl.miystengine.client.MiystFramework;
 import nl.miystengine.client.gui.Gui;
@@ -96,8 +93,6 @@ public class GifRenderer
 		MiystFramework.miystengine.getTextureManager().bindTexture(MiystFramework.miystengine.getPath().source+"/blendmap.png",0,true); 	
 	   	gui.drawTexturedNoTexture(positionX, positionY, width ,gifHeightEnd,0, gifHeightBegin);
 	}
-	
-	private double test;
 	
 	public void updateGif()
 	{
